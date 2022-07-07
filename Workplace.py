@@ -100,7 +100,7 @@ if Menu == "Dataset":
     with col5:
         st_lottie(lottie_dataset, key = "eda",height = 400, width = 700)
     st.write('The data contain 27 columns (features) and 1259 rows (values - candidates, who answered the questions)')
-    df=pd.read_csv("C:/Users/sarah/Desktop/Healthcare_1/output.csv")
+    df=pd.read_csv("output.csv")
     # select box
     # Get Percentage of Gender
     df_gender = df.groupby(['Gender'],as_index=False).size()
