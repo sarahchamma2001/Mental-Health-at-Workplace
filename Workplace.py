@@ -113,7 +113,7 @@ if Menu == "Dataset":
     Country = list(chain(*Country))
     st.dataframe(df)
 # EDA page
-df=pd.read_csv("C:/Users/sarah/Desktop/Healthcare_1/output.csv")
+df=pd.read_csv("output.csv")
 if Menu == "EDA":
   st.header("Visualizations")
   m1, m2, m3, m4, m5, m6 = st.columns((1,1,1,1,1,1))
