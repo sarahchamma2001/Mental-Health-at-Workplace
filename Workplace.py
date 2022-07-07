@@ -15,7 +15,6 @@ import plotly.express as px
 import joblib
 import sklearn
 import statsmodels.api as sm
-from tkinter import Menu
 # Display lottie animations
 def load_lottieurl(url):
 
