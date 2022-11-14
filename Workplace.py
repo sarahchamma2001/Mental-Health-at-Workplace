@@ -48,8 +48,8 @@ styles={"container": {"padding": "0!important", "background-color": "#fafafa"},"
 if Menu == "Home":
       # Display Introduction
 #Upload Image
-    image=Image.open('mental health.jpg')
     from PIL import Image
+    image=Image.open('mental health.jpg')
     title_container = st.container()
     col1, mid, col2 = st.columns([1,4,1])
     col3, mid1, col4 = st.columns([1,4,1])
