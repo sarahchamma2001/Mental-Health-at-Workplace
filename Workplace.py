@@ -25,93 +25,41 @@ def load_lottieurl(url):
         return None
     return r.json()
 # Extract Lottie Animations
-lottie_home = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_v24qabmn.json")
+
+lottie_home = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_tijmpky4.json")
 lottie_dataset = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_grpcjnlf.json")
-lottie_prediction= load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_vphmb8o0.json")
+lottie_prediction= load_lottieurl("https://assets4.lottiefiles.com/private_files/lf30_ghysqmiq.json")
 
 #Title
 st.set_page_config(page_title='Mental Health at workplace',  layout='wide')
 
 #header
 t1, t2 = st.columns((0.4,1)) 
-t2.title("Mental Health at the workplace")
+t2.title("Mental Health & Well-being")
 
 #Hydralit Navbar
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
 # define what option labels and icons to display
-Menu = option_menu(None, ["Home", "Dataset",  "EDA", "Prediction"], 
-    icons=['house', 'cloud-upload', "bar-chart-line","clipboard-check"], 
-    menu_icon="cast", default_index=0, orientation="horizontal",
-    styles={
-        "container": {"padding": "0!important", "background-color": "#fafafa"},
-        "icon": {"color": "black", "font-size": "25px"}, 
-        "nav-link": {"font-size": "25px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
-        "nav-link-selected": {"background-color": "pink"},
-    }
-)
+Menu = option_menu(None, ["Home",  "EDA", "Prediction"], icons=['house',"bar-chart-line","clipboard-check"],
+menu_icon="cast", default_index=0, orientation="horizontal", 
+styles={"container": {"padding": "0!important", "background-color": "#fafafa"},"icon": {"color": "black", "font-size": "25px"}, "nav-link": {"font-size": "15px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},"nav-link-selected": {"background-color": "#4F6272"},})
 # Home Page
 if Menu == "Home":
       # Display Introduction
-    st.markdown("""
-    <article>
-  <header class="bg-gold sans-seSans Serif">
-    <div class="mw9 center pa4 pt5-ns ph7-l">
-      <h3 class="f2 f1-m f-headline-l measure-narrow lh-title mv0">
-        <span class="bg-black-90 lh-copy white pa1 tracked-tight">
-        </span>
-      </h3>
-      <h4 class="f3 fw1 Sans Serif i">Analyzing Mental Health at Workplace data</h4>
-      <h5 class="f6 ttu tracked black-80">By Sarah Chamma</h5>
-      </div>
-      </p>
-      </div>
-      </article>""",unsafe_allow_html=True)
 #Upload Image
     from PIL import Image
     title_container = st.container()
-    col1, mid, col2 = st.columns([30,3,35])
+    col1, mid, col2 = st.columns([1,4,1])
+    col3, mid1, col4 = st.columns([1,4,1])
     with title_container:
-      with col1:
-        st_lottie(lottie_home, key = "upload",width = 700)
-      with col2:
-        st.write('Mental health affects your emotional, psychological and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make decisions. In the workplace, communication and inclusion are keys skills for successful high performing teams or employees.In this application, We will explore the factors that affect an individuals mental health at workplace and develop a model that can predict whether an employee seeks treatment or not.')
+      with mid:
+       image=Image.open('mental health.jpg')
+       st.image(image,caption='')
+    with title_container:
+      with mid1:
+        st.write('Without effective support, mental disorders and other mental health conditions can affect a person confidence and identity at work, capacity to work productively, absences and the ease with which to retain or gain work.')
 
-# Dataset page
-
-if Menu == "Dataset":
-#data
-# 2 Column Layouts of Same Size
-    col4,col5 = st.columns([1,1])
-
-    # First Column - Shows Description of EDA
-    with col4:
-        st.markdown("""
-        <h3 class="f2 f1-m f-headline-l measure-narrow lh-title mv0">
-         Know Your Data
-         </h3>
-         <p class="f5 f4-ns lh-copy measure mb4" style="text-align: justify;font-family: Sans Serif">
-          Before implementing the machine learning model, it is important at the initial stage to explore the data and understand and try to gather as many insights from it. 
-         </p>
-            """,unsafe_allow_html = True)
-        global eda_button
-
-    # Display customer churn animation
-    with col5:
-        st_lottie(lottie_dataset, key = "eda",height = 400, width = 700)
-    st.write('The data contain 27 columns (features) and 1259 rows (values - candidates, who answered the questions)')
-    df=pd.read_csv("output.csv")
-    # select box
-    # Get Percentage of Gender
-    df_gender = df.groupby(['Gender'],as_index=False).size()
-
-    # Change Total Charges to numeric
-    df['Age']= pd.to_numeric(df['Age'], errors='coerce')
-
-    # Get unique list of Citites
-    Country = [['All'],df['Country'].unique().tolist()]
-    Country = list(chain(*Country))
-    st.dataframe(df)
 # EDA page
 df=pd.read_csv("output.csv")
 if Menu == "EDA":
@@ -167,8 +115,8 @@ if Menu == "EDA":
                     textfont_size=15,
                     opacity = 0.8,
                     showlegend = False,
-                    marker = dict(colors = sns.color_palette('YlGn').as_hex(),
-                                line=dict(color='#000000', width=1)))
+                    marker = dict(colors = ['#4F6272', '#B7C3F3','#A7C3F6'] ,
+                                line=dict(color='#4F6272', width=1)))
               
 
   fig.update_layout(margin=dict(t=0, b=0, l=0, r=0),
@@ -197,42 +145,42 @@ if Menu == "EDA":
                           textfont = dict(size = 12,
                                           family = 'monospace'),
                           textposition = 'outside',
-                          marker=dict(color="#6aa87b")
+                          marker=dict(color="#4F6272")
                           ), row=1, col=1)
 
   fig.append_trace(go.Histogram(
                           x = df['Age'],
                           nbinsx = 8,
                           text = ['16', '500', '562', '149', '26', '5', '1'],
-                          marker =  dict(color="#6aa87b")),
+                          marker =  dict(color="#B7C3F3")),
                           row=1, col=2)
 # For Subplot : 1
 
-  fig.update_xaxes(
-          row=1, col=1,
-          tickfont = dict(size=10, family = 'monospace'),
-          tickmode = 'array',
-          ticktext = df['Country'].value_counts().index,
-          tickangle = 50,
-          ticklen = 8,
-          showline = False,
-          showgrid = False,
-          ticks = 'outside')
+  #fig.update_xaxes(
+          #row=1, col=1,
+          #tickfont = dict(size=10, family = 'monospace'),
+          #tickmode = 'array',
+          #ticktext = df['Country'].value_counts().index,
+          #tickangle = 50,
+          #ticklen = 8,
+          #showline = False,
+          #showgrid = False,
+          #ticks = 'outside')
 
-  fig.update_yaxes(type = 'log',
-          row=1, col=1,
-          tickfont = dict(size=15, family = 'monospace'),
-          tickmode = 'array',
-          showline = False,
-          showgrid = False,
-          ticks = 'outside')
-  fig.update_traces(
-                    marker_line_color='black',
-                    marker_line_width= 1.2,
-                    opacity=0.6,
-                    row = 1, col = 1)
+     #fig.update_yaxes(type = 'log',
+         # row=1, col=1,
+          #tickfont = dict(size=15, family = 'monospace'),
+          #tickmode = 'array',
+          #showline = False,
+          #showgrid = False,
+          #ticks = 'outside')
+  #fig.update_traces(
+                    #marker_line_color='black',
+                    #marker_line_width= 1.2,
+                    #opacity=0,
+                    # row = 1, col = 1)
 
-  fig.update_xaxes(range=[-1,10], row = 1, col = 1)
+  #fig.update_xaxes(range=[-1,10], row = 1, col = 1)
 
 # For Subplot : 2
 
@@ -317,16 +265,16 @@ if Menu == "EDA":
                     textfont_size=15,
                     opacity = 0.8,
                     showlegend = False,
-                    marker = dict(colors = sns.color_palette('YlGn').as_hex(),
-                                line=dict(color='#000000', width=1)))
+                    marker = dict(colors = ['#4F6272', '#B7C3F3', '#DD7596', '#8EB897', '#A7C3F6'] ,
+                                line=dict(color='#4F6272', width=1)))
 
   fig.update_traces(row=1, col=2, hoverinfo='label+percent',
                     textinfo='label+percent',
                     textfont_size=15,
                     opacity = 0.8,
                     showlegend = False,
-                    marker = dict(colors = sns.color_palette('Reds').as_hex(),
-                                line=dict(color='#000000', width=1)))
+                    marker = dict(colors = ['#4F6272', '#B7C3F3', '#DD7596', '#8EB897', '#A7C3F6'] ,
+                                line=dict(color='#4F6272', width=1)))
 
   fig.update_layout(margin=dict(t=0, b=0, l=0, r=0),
                   font_family   = 'monospace',
@@ -352,33 +300,7 @@ if Menu == "EDA":
   for i in range(1,42): 
       fig.data[i].visible = False
   fig.data[21].visible = True
-  cw1.plotly_chart(fig, use_container_width=True) 
-
-
-  r1, r2, r3 = st.columns((1,1,1))
-  if Menu== "EDA":r1.markdown("Family History vs treatment")
-  discharge = (df.groupby(['treatment'])['family_history'].value_counts(normalize=True).rename('percentage').mul(100).reset_index().sort_values('family_history'))
-  fig1=plt.figure(figsize=(4,3))
-  sns.barplot(x="family_history", y="percentage", hue="treatment",palette= "ch:start=.6,rot=-.6", data=discharge)
-  sns.color_palette("light:#5A9", as_cmap=True)
-  plt.show()
-  r1.plotly_chart(fig1, use_container_width=True)
-
-  if Menu== "EDA":r2.markdown("wellness_program vs treatment")
-  discharge2 = (df.groupby(['treatment'])['wellness_program'].value_counts(normalize=True).rename('percentage').mul(100).reset_index().sort_values('wellness_program'))
-  fig2=plt.figure(figsize=(4,3))
-  sns.barplot(x="wellness_program", y="percentage", hue="treatment",palette= "ch:start=.6,rot=-.6", data=discharge2)
-  plt.show()
-  r2.plotly_chart(fig2, use_container_width=True)
-
-  if Menu== "EDA":r3.markdown("benefits vs treatment")
-  discharge3 = (df.groupby(['treatment'])['benefits'].value_counts(normalize=True).rename('percentage').mul(100).reset_index().sort_values('benefits'))
-  fig3=plt.figure(figsize=(4,3))
-  sns.barplot(x="benefits", y="percentage", hue="treatment",palette= "ch:start=.6,rot=-.6", data=discharge3)
-  plt.show()
-  r3.plotly_chart(fig3, use_container_width=True) 
-  
-  
+  cw1.plotly_chart(fig, use_container_width=True)  
 
 
 # Machine Learning Application
