@@ -47,18 +47,6 @@ styles={"container": {"padding": "0!important", "background-color": "#fafafa"},"
 # Home Page
 if Menu == "Home":
       # Display Introduction
-#Upload Image
-    from PIL import Image
-    image=Image.open('mental health.jpg')
-    title_container = st.container()
-    col1, mid, col2 = st.columns([1,4,1])
-    col3, mid1, col4 = st.columns([1,4,1])
-    with title_container:
-      with mid:
-       st.image(image,caption='')
-    with title_container:
-      with mid1:
-        st.write('Without effective support, mental disorders and other mental health conditions can affect a person confidence and identity at work, capacity to work productively, absences and the ease with which to retain or gain work.')
 
 # EDA page
 df=pd.read_csv("output.csv")
@@ -157,15 +145,15 @@ if Menu == "Prediction":
             benefits = st.selectbox("benefits",("Yes","No","Don't Know"))
 
         with cols3[3]:
-            care_options  = st.selectbox("care_options ",("Yes","No","Not sure"))
+            care_options  = st.selectbox("Company Insurance Package",("Yes","No","Not sure"))
 
         cols4 = st.columns(4)
 
         with cols4[0]:
-            wellness_program= st.selectbox("wellness_program ",("Yes","No","Don't Know"))
+            wellness_program= st.selectbox("Company invest in Wellness programs ",("Yes","No"))
 
         with cols4[1]:
-            seek_help = st.selectbox("seek_help",("Yes","No","Don't Know"))
+            seek_help = st.selectbox("Would you seek help?",("Yes","No","Don't Know"))
 
         with cols4[2]:
             anonymity = st.selectbox("anonymity",("Yes","No","Dont't Know"))
@@ -182,7 +170,7 @@ if Menu == "Prediction":
             phys_health_consequence = st.selectbox("phys_health_consequence ",("Yes","No","Maybe"))
 
         with cols5[2]:
-            coworkers = st.selectbox("coworkers",("Yes","No","Some of them"))
+            coworkers = st.selectbox("Safe & Welcoming environment",("Yes","No","Some of them"))
 
         with cols5[3]:
             supervisor = st.selectbox("supervisor",("Yes","No","Some of them"))
