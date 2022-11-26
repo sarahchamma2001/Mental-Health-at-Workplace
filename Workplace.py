@@ -41,7 +41,7 @@ t2.title("Mental Health & Well-being")
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
 # define what option labels and icons to display
-Menu = option_menu(None, ["Home",  "EDA", "Prediction"], icons=['house',"bar-chart-line","clipboard-check"],
+Menu = option_menu(None, ["Home", "Prediction"], icons=['house',"bar-chart-line","clipboard-check"],
 menu_icon="cast", default_index=0, orientation="horizontal", 
 styles={"container": {"padding": "0!important", "background-color": "#fafafa"},"icon": {"color": "black", "font-size": "25px"}, "nav-link": {"font-size": "15px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},"nav-link-selected": {"background-color": "#4F6272"},})
 # Home Page
