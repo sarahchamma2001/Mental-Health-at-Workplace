@@ -67,7 +67,6 @@ if Menu == "Prediction":
     with col[0]:
         st.markdown("""
         <h3 class="f2 f1-m f-headline-l measure-narrow lh-title mv0">
-        Know The Risks
          </h3>
          <p class="f5 f4-ns lh-copy measure mb4" style="text-align: justify;font-family: Sans Serif">
          Please fill out the below details:
