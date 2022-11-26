@@ -85,8 +85,7 @@ if Menu == "Prediction":
         Know The Risks
          </h3>
          <p class="f5 f4-ns lh-copy measure mb4" style="text-align: justify;font-family: Sans Serif">
-        It's time to assess if any employee may seek medical attention. 
-        To see the outcome, fill out the employee details.
+         Please fill out the below details:
          </p> 
             """,unsafe_allow_html = True)
 
