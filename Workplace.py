@@ -132,13 +132,13 @@ if Menu == "Prediction":
         st.title("Company Information")
         cols3 = st.columns(4)
         with cols3[0]:
-            remote_work = st.selectbox("remote_work",("Yes","No"))
+            remote_work = st.selectbox("Do you work remotely (outside of an office) at least 50% of the time?",("Yes","No"))
 
         with cols3[1]:
             tech_company = st.selectbox("Is your employer primarily a tech company/organization?",("Yes","No"))
 
         with cols3[2]:
-            benefits = st.selectbox("benefits",("Yes","No","Don't Know"))
+            benefits = st.selectbox("Does your employer provide mental health benefits?",("Yes","No"))
 
         with cols3[3]:
             care_options  = st.selectbox("Company Insurance Package",("Yes","No","Not sure"))
