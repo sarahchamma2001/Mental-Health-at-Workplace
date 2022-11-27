@@ -120,7 +120,7 @@ if Menu == "Prediction":
             family_history = st.selectbox("Do you have a family history of mental illness?",('Yes','No'))
 
         with cols2[1]:
-            work_interfere = st.selectbox("If you have a mental health condition, do you feel that it interferes with your work?",("Sometimes","Often","Rarely","Never","no answer"))
+            work_interfere = st.selectbox("If you have a mental illness, do you feel that it interferes with your work?",("Sometimes","Often","Rarely","Never","no answer"))
 
         with cols2[2]:
             no_employees = st.selectbox("How many employees does your company have?",("1-5","6-25","26-100","100-500","500-1000","More than 1000"))
