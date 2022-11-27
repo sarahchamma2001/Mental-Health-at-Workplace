@@ -112,18 +112,18 @@ if Menu == "Prediction":
             Gender = st.selectbox("Gender",('Female','Male','Other'))
 
         with cols1[2]:
-            self_employed = st.selectbox("self_employed",("Yes","No"))
+            self_employed = st.selectbox("Are you self-employed?",("Yes","No"))
         
 
         cols2 = st.columns(3)
         with cols2[0]:
-            family_history = st.selectbox("family_history",('Yes','No'))
+            family_history = st.selectbox("Do you have a family history of mental illness?",('Yes','No'))
 
         with cols2[1]:
-            work_interfere = st.selectbox("work_interfere",("Sometimes","Often","Rarely","Never","no answer"))
+            work_interfere = st.selectbox("If you have a mental health condition, do you feel that it interferes with your work?",("Sometimes","Often","Rarely","Never","no answer"))
 
         with cols2[2]:
-            no_employees = st.selectbox("no_employees",("1-5","6-25","26-100","100-500","500-1000","More than 1000"))
+            no_employees = st.selectbox("How many employees does your company have?",("1-5","6-25","26-100","100-500","500-1000","More than 1000"))
 
 
         st.write("------")
@@ -155,7 +155,7 @@ if Menu == "Prediction":
             anonymity = st.selectbox("anonymity",("Yes","No","Dont't Know"))
 
         with cols4[3]:
-            leave = st.selectbox("leave",("Very Easy","Somewhat Easy","Somewhat Difficult","Very Difficult","Don't Know"))
+            leave = st.selectbox("How easy is it for you to take medical leave for a mental health condition?",("Very Easy","Somewhat Easy","Somewhat Difficult","Very Difficult","Don't Know"))
 
 
         cols5 = st.columns(4)
@@ -166,10 +166,10 @@ if Menu == "Prediction":
             phys_health_consequence = st.selectbox("phys_health_consequence ",("Yes","No","Maybe"))
 
         with cols5[2]:
-            coworkers = st.selectbox("Safe & Welcoming environment",("Yes","No","Some of them"))
+            coworkers = st.selectbox("Would you be willing to discuss a mental health issue with your coworkers?",("Yes","No","Some of them"))
 
         with cols5[3]:
-            supervisor = st.selectbox("supervisor",("Yes","No","Some of them"))
+            supervisor = st.selectbox("Would you be willing to discuss a mental health issue with your direct supervisor(s)?",("Yes","No","Some of them"))
 
         cols6 = st.columns(4)
         
