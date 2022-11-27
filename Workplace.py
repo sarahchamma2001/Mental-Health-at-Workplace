@@ -103,7 +103,7 @@ if Menu == "Prediction":
 
         st.title('Employee Information')
 
-        cols1 = st.columns(3)
+        cols1 = st.columns(2)
 
         with cols1[0]:
             Age = st.number_input("Age", value = 18, min_value =18, max_value=70)
@@ -111,19 +111,20 @@ if Menu == "Prediction":
         with cols1[1]:
             Gender = st.selectbox("Gender",('Female','Male','Other'))
 
-        with cols1[2]:
+        cols11 = st.columns(2)
+        with cols11[0]:
             self_employed = st.selectbox("Are you self-employed?",("Yes","No"))
+
+        with cols11[1]:
+            no_employees = st.selectbox("How many employees does your company have?",("1-5","6-25","26-100","100-500","500-1000","More than 1000"))
         
 
-        cols2 = st.columns(3)
-        with cols2[0]:
+        cols12 = st.columns(2)
+        with cols12[0]:
             family_history = st.selectbox("Do you have a family history of mental illness?",('Yes','No'))
 
-        with cols2[1]:
+        with cols12[1]:
             work_interfere = st.selectbox("If you have a mental illness, do you feel that it interferes with your work?",("Sometimes","Often","Rarely","Never","no answer"))
-
-        with cols2[2]:
-            no_employees = st.selectbox("How many employees does your company have?",("1-5","6-25","26-100","100-500","500-1000","More than 1000"))
 
 
         st.write("------")
