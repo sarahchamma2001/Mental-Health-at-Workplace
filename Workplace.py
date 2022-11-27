@@ -132,27 +132,27 @@ if Menu == "Prediction":
         st.title("Company Information")
         cols3 = st.columns(4)
         with cols3[0]:
-            remote_work = st.selectbox("Do you work remotely (outside of an office) at least 50% of the time?",("Yes","No"))
+            remote_work = st.selectbox("Do you work remotely at least 50% of the time?",("Yes","No"))
 
         with cols3[1]:
-            tech_company = st.selectbox("Is your employer primarily a tech company/organization?",("Yes","No"))
+            tech_company = st.selectbox("Is your employer primarily a tech company?",("Yes","No"))
 
         with cols3[2]:
             benefits = st.selectbox("Does your employer provide mental health benefits?",("Yes","No"))
 
         with cols3[3]:
-            care_options  = st.selectbox("Company Insurance Package",("Yes","No","Not sure"))
+            care_options  = st.selectbox("Does your company provide an Insurance Package",("Yes","No","Not sure"))
 
         cols4 = st.columns(4)
 
         with cols4[0]:
-            wellness_program= st.selectbox("Has your employer ever discussed mental health as part of an employee wellness program?",("Yes","No"))
+            wellness_program= st.selectbox("Has your employer discussed mental health as part of an employee wellness program?",("Yes","No"))
 
         with cols4[1]:
             seek_help = st.selectbox("Would you seek help?",("Yes","No","Don't Know"))
 
         with cols4[2]:
-            anonymity = st.selectbox("Is your anonymity protected if you choose to take advantage of mental health or substance abuse treatment resources?",("Yes","No","Dont't Know"))
+            anonymity = st.selectbox("Is your anonymity protected if you choose to take advantage of mental health?",("Yes","No","Dont't Know"))
 
         with cols4[3]:
             leave = st.selectbox("How easy is it for you to take medical leave for a mental health condition?",("Very Easy","Somewhat Easy","Somewhat Difficult","Very Difficult","Don't Know"))
@@ -183,7 +183,7 @@ if Menu == "Prediction":
             mental_vs_physical = st.selectbox("Do you feel that your employer takes mental health as seriously as physical health?",("Yes","No","Don't Know"))
         
         with cols6[3]:
-            obs_consequence = st.selectbox("Have you heard or observed negative consequences for coworkers with mental health conditions in your workplace?",("Yes","No"))
+            obs_consequence = st.selectbox("Have you heard negative consequences for coworkers with mental health conditions in your workplace?",("Yes","No"))
 
         # Transform the inputs into a dataframe shape of size 1 so the model predict the outcome
         dataframe = {'Age':Age,
