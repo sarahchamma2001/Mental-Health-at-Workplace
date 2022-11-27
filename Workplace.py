@@ -135,7 +135,7 @@ if Menu == "Prediction":
             remote_work = st.selectbox("remote_work",("Yes","No"))
 
         with cols3[1]:
-            tech_company = st.selectbox("tech_company",("Yes","No"))
+            tech_company = st.selectbox("Is your employer primarily a tech company/organization?",("Yes","No"))
 
         with cols3[2]:
             benefits = st.selectbox("benefits",("Yes","No","Don't Know"))
@@ -163,7 +163,7 @@ if Menu == "Prediction":
             mental_health_consequence = st.selectbox("mental_health_consequence",("Yes","No","Maybe"))
 
         with cols5[1]:
-            phys_health_consequence = st.selectbox("phys_health_consequence ",("Yes","No","Maybe"))
+            phys_health_consequence = st.selectbox("Do you think that discussing a physical health issue with your employer would have negative consequences?",("Yes","No","Maybe"))
 
         with cols5[2]:
             coworkers = st.selectbox("Would you be willing to discuss a mental health issue with your coworkers?",("Yes","No","Some of them"))
