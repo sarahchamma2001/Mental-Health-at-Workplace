@@ -160,7 +160,7 @@ if Menu == "Prediction":
 
         cols5 = st.columns(4)
         with cols5[0]:
-            mental_health_consequence = st.selectbox("mental_health_consequence",("Yes","No","Maybe"))
+            mental_health_consequence = st.selectbox("Do you think that discussing a mental health issue with your employer would have negative consequences?",("Yes","No","Maybe"))
 
         with cols5[1]:
             phys_health_consequence = st.selectbox("Do you think that discussing a physical health issue with your employer would have negative consequences?",("Yes","No","Maybe"))
@@ -269,7 +269,7 @@ if Menu == "Prediction":
             # Customer Unlikely To Churn
             with col2:
                 st.markdown("""<h3 style="color:#0178e4;font-size:35px;">
-                   No need for treatment
+                   You don't need a mental health treatment
                     </h3>""",unsafe_allow_html = True)
         else:
                  st.write("")
@@ -279,5 +279,5 @@ if Menu == "Prediction":
                  # Show Warning Message
                  with col4:
                      st.markdown("""<h3 style="color:#00284c;font-size:35px;">
-                        Need a treatment
+                        You need a mental health treatment
                          </h3>""",unsafe_allow_html = True)
