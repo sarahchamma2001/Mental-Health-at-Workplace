@@ -142,7 +142,7 @@ if Menu == "Prediction":
         with cols4[0]:
             benefits = st.selectbox("Does your employer provide mental health benefits?",("Yes","No"))
 
-        with cols3[1]:
+        with cols4[1]:
             care_options  = st.selectbox("Does your company provide an Insurance Package",("Yes","No","Not sure"))
 
         cols5 = st.columns(2)
