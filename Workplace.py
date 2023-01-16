@@ -57,6 +57,7 @@ if Menu == "Home":
     with title_container:
       with mid1:
         st.write('Without effective support, mental disorders and other mental health conditions can affect a person confidence and identity at work, capacity to work productively, absences and the ease with which to retain or gain work.')
+
 if Menu == "EDA":
   st.header("Visualizations")
   m1, m2, m3, m4, m5, m6 = st.columns((1,1,1,1,1,1))
