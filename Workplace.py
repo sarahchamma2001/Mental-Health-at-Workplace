@@ -60,6 +60,43 @@ if Menu == "Home":
       with mid1:
         st.write('Without effective support, mental disorders and other mental health conditions can affect a person confidence and identity at work, capacity to work productively, absences and the ease with which to retain or gain work.')
 
+# Dataset page
+
+if Menu == "Dataset":
+#data
+# 2 Column Layouts of Same Size
+    col4,col5 = st.columns([1,1])
+
+    # First Column - Shows Description of EDA
+    with col4:
+        st.markdown("""
+        <h3 class="f2 f1-m f-headline-l measure-narrow lh-title mv0">
+         Know Your Data
+         </h3>
+         <p class="f5 f4-ns lh-copy measure mb4" style="text-align: justify;font-family: Sans Serif">
+          Before implementing the machine learning model, it is important at the initial stage to explore the data and understand and try to gather as many insights from it. 
+         </p>
+            """,unsafe_allow_html = True)
+        global eda_button
+
+    # Display customer churn animation
+    with col5:
+        st_lottie(lottie_dataset, key = "eda",height = 400, width = 700)
+    st.write('The data contain 27 columns (features) and 1259 rows (values - candidates, who answered the questions)')
+    df=pd.read_csv("C:/Users/sarah/Desktop/Healthcare_1/output.csv")
+    # select box
+    # Get Percentage of Gender
+    df_gender = df.groupby(['Gender'],as_index=False).size()
+
+    # Change Total Charges to numeric
+    df['Age']= pd.to_numeric(df['Age'], errors='coerce')
+
+    # Get unique list of Citites
+    Country = [['All'],df['Country'].unique().tolist()]
+    Country = list(chain(*Country))
+    st.dataframe(df)
+# EDA page
+df=pd.read_csv("C:/Users/sarah/Desktop/Healthcare_1/output.csv")
 if Menu == "EDA":
   st.header("Visualizations")
   m1, m2, m3, m4, m5, m6 = st.columns((1,1,1,1,1,1))
@@ -113,8 +150,8 @@ if Menu == "EDA":
                     textfont_size=15,
                     opacity = 0.8,
                     showlegend = False,
-                    marker = dict(colors = ['#4F6272', '#B7C3F3','#A7C3F6'] ,
-                                line=dict(color='#4F6272', width=1)))
+                    marker = dict(colors = sns.color_palette('YlGn').as_hex(),
+                                line=dict(color='#000000', width=1)))
               
 
   fig.update_layout(margin=dict(t=0, b=0, l=0, r=0),
@@ -143,42 +180,42 @@ if Menu == "EDA":
                           textfont = dict(size = 12,
                                           family = 'monospace'),
                           textposition = 'outside',
-                          marker=dict(color="#4F6272")
+                          marker=dict(color="#6aa87b")
                           ), row=1, col=1)
 
   fig.append_trace(go.Histogram(
                           x = df['Age'],
                           nbinsx = 8,
                           text = ['16', '500', '562', '149', '26', '5', '1'],
-                          marker =  dict(color="#B7C3F3")),
+                          marker =  dict(color="#6aa87b")),
                           row=1, col=2)
 # For Subplot : 1
 
-  #fig.update_xaxes(
-          #row=1, col=1,
-          #tickfont = dict(size=10, family = 'monospace'),
-          #tickmode = 'array',
-          #ticktext = df['Country'].value_counts().index,
-          #tickangle = 50,
-          #ticklen = 8,
-          #showline = False,
-          #showgrid = False,
-          #ticks = 'outside')
+  fig.update_xaxes(
+          row=1, col=1,
+          tickfont = dict(size=10, family = 'monospace'),
+          tickmode = 'array',
+          ticktext = df['Country'].value_counts().index,
+          tickangle = 50,
+          ticklen = 8,
+          showline = False,
+          showgrid = False,
+          ticks = 'outside')
 
-     #fig.update_yaxes(type = 'log',
-         # row=1, col=1,
-          #tickfont = dict(size=15, family = 'monospace'),
-          #tickmode = 'array',
-          #showline = False,
-          #showgrid = False,
-          #ticks = 'outside')
-  #fig.update_traces(
-                    #marker_line_color='black',
-                    #marker_line_width= 1.2,
-                    #opacity=0,
-                    # row = 1, col = 1)
+  fig.update_yaxes(type = 'log',
+          row=1, col=1,
+          tickfont = dict(size=15, family = 'monospace'),
+          tickmode = 'array',
+          showline = False,
+          showgrid = False,
+          ticks = 'outside')
+  fig.update_traces(
+                    marker_line_color='black',
+                    marker_line_width= 1.2,
+                    opacity=0.6,
+                    row = 1, col = 1)
 
-  #fig.update_xaxes(range=[-1,10], row = 1, col = 1)
+  fig.update_xaxes(range=[-1,10], row = 1, col = 1)
 
 # For Subplot : 2
 
@@ -263,16 +300,16 @@ if Menu == "EDA":
                     textfont_size=15,
                     opacity = 0.8,
                     showlegend = False,
-                    marker = dict(colors = ['#4F6272', '#B7C3F3', '#DD7596', '#8EB897', '#A7C3F6'] ,
-                                line=dict(color='#4F6272', width=1)))
+                    marker = dict(colors = sns.color_palette('YlGn').as_hex(),
+                                line=dict(color='#000000', width=1)))
 
   fig.update_traces(row=1, col=2, hoverinfo='label+percent',
                     textinfo='label+percent',
                     textfont_size=15,
                     opacity = 0.8,
                     showlegend = False,
-                    marker = dict(colors = ['#4F6272', '#B7C3F3', '#DD7596', '#8EB897', '#A7C3F6'] ,
-                                line=dict(color='#4F6272', width=1)))
+                    marker = dict(colors = sns.color_palette('Reds').as_hex(),
+                                line=dict(color='#000000', width=1)))
 
   fig.update_layout(margin=dict(t=0, b=0, l=0, r=0),
                   font_family   = 'monospace',
@@ -298,8 +335,33 @@ if Menu == "EDA":
   for i in range(1,42): 
       fig.data[i].visible = False
   fig.data[21].visible = True
-  cw1.plotly_chart(fig, use_container_width=True)  
+  cw1.plotly_chart(fig, use_container_width=True) 
 
+
+  r1, r2, r3 = st.columns((1,1,1))
+  if Menu== "EDA":r1.markdown("Family History vs treatment")
+  discharge = (df.groupby(['treatment'])['family_history'].value_counts(normalize=True).rename('percentage').mul(100).reset_index().sort_values('family_history'))
+  fig1=plt.figure(figsize=(4,3))
+  sns.barplot(x="family_history", y="percentage", hue="treatment",palette= "ch:start=.6,rot=-.6", data=discharge)
+  sns.color_palette("light:#5A9", as_cmap=True)
+  plt.show()
+  r1.plotly_chart(fig1, use_container_width=True)
+
+  if Menu== "EDA":r2.markdown("wellness_program vs treatment")
+  discharge2 = (df.groupby(['treatment'])['wellness_program'].value_counts(normalize=True).rename('percentage').mul(100).reset_index().sort_values('wellness_program'))
+  fig2=plt.figure(figsize=(4,3))
+  sns.barplot(x="wellness_program", y="percentage", hue="treatment",palette= "ch:start=.6,rot=-.6", data=discharge2)
+  plt.show()
+  r2.plotly_chart(fig2, use_container_width=True)
+
+  if Menu== "EDA":r3.markdown("benefits vs treatment")
+  discharge3 = (df.groupby(['treatment'])['benefits'].value_counts(normalize=True).rename('percentage').mul(100).reset_index().sort_values('benefits'))
+  fig3=plt.figure(figsize=(4,3))
+  sns.barplot(x="benefits", y="percentage", hue="treatment",palette= "ch:start=.6,rot=-.6", data=discharge3)
+  plt.show()
+  r3.plotly_chart(fig3, use_container_width=True) 
+  
+  
 
 
 # Machine Learning Application
@@ -320,9 +382,11 @@ if Menu == "Prediction":
     with col[0]:
         st.markdown("""
         <h3 class="f2 f1-m f-headline-l measure-narrow lh-title mv0">
+        Know The Risks
          </h3>
          <p class="f5 f4-ns lh-copy measure mb4" style="text-align: justify;font-family: Sans Serif">
-         Please fill out the below details:
+        It's time to assess if any employee may seek medical attention. 
+        To see the outcome, fill out the employee details.
          </p> 
             """,unsafe_allow_html = True)
 
@@ -356,92 +420,87 @@ if Menu == "Prediction":
 
         st.title('Employee Information')
 
-        cols1 = st.columns(2)
+        cols1 = st.columns(3)
 
         with cols1[0]:
-            Age = st.number_input("Age", value = 18, min_value =18, max_value=70)
+            Age = st.number_input("Age", value = 18.00, min_value =18.00, max_value=70.00)
 
         with cols1[1]:
             Gender = st.selectbox("Gender",('Female','Male','Other'))
 
-        cols11 = st.columns(2)
-        with cols11[0]:
-            self_employed = st.selectbox("Are you self-employed?",("Yes","No"))
-
-        with cols11[1]:
-            no_employees = st.selectbox("How many employees does your company have?",("1-5","6-25","26-100","100-500","500-1000","More than 1000"))
+        with cols1[2]:
+            self_employed = st.selectbox("self_employed",("Yes","No"))
         
 
-        cols12 = st.columns(2)
-        with cols12[0]:
-            family_history = st.selectbox("Do you have a family history of mental illness?",('Yes','No'))
+        cols2 = st.columns(3)
+        with cols2[0]:
+            family_history = st.selectbox("family_history",('Yes','No'))
 
-        with cols12[1]:
-            work_interfere = st.selectbox("If you have a mental illness, do you feel that it interferes with your work?",("Sometimes","Often","Rarely","Never","no answer"))
+        with cols2[1]:
+            work_interfere = st.selectbox("work_interfere",("Sometimes","Often","Rarely","Never","no answer"))
+
+        with cols2[2]:
+            no_employees = st.selectbox("no_employees",("1-5","6-25","26-100","100-500","500-1000","More than 1000"))
 
 
         st.write("------")
 
         # Company Information
         st.title("Company Information")
-        cols3 = st.columns(2)
+        cols3 = st.columns(4)
         with cols3[0]:
-            remote_work = st.selectbox("Do you work remotely at least 50% of the time?",("Yes","No"))
+            remote_work = st.selectbox("remote_work",("Yes","No"))
 
         with cols3[1]:
-            tech_company = st.selectbox("Is your employer primarily a tech company?",("Yes","No"))
-            
-        cols4 = st.columns(2)
+            tech_company = st.selectbox("tech_company",("Yes","No"))
+
+        with cols3[2]:
+            benefits = st.selectbox("benefits",("Yes","No","Don't Know"))
+
+        with cols3[3]:
+            care_options  = st.selectbox("care_options ",("Yes","No","Not sure"))
+
+        cols4 = st.columns(4)
 
         with cols4[0]:
-            benefits = st.selectbox("Does your employer provide mental health benefits?",("Yes","No"))
+            wellness_program= st.selectbox("wellness_program ",("Yes","No","Don't Know"))
 
         with cols4[1]:
-            care_options  = st.selectbox("Does your company provide an Insurance Package",("Yes","No","Not sure"))
+            seek_help = st.selectbox("seek_help",("Yes","No","Don't Know"))
 
-        cols5 = st.columns(2)
+        with cols4[2]:
+            anonymity = st.selectbox("anonymity",("Yes","No","Dont't Know"))
 
+        with cols4[3]:
+            leave = st.selectbox("leave",("Very Easy","Somewhat Easy","Somewhat Difficult","Very Difficult","Don't Know"))
+
+
+        cols5 = st.columns(4)
         with cols5[0]:
-            wellness_program= st.selectbox("Has your employer discussed mental health as part of an employee wellness program?",("Yes","No"))
+            mental_health_consequence = st.selectbox("mental_health_consequence",("Yes","No","Maybe"))
 
         with cols5[1]:
-            seek_help = st.selectbox("Would you seek help?",("Yes","No","Don't Know"))
-            
-        cols6 = st.columns(2)
+            phys_health_consequence = st.selectbox("phys_health_consequence ",("Yes","No","Maybe"))
+
+        with cols5[2]:
+            coworkers = st.selectbox("coworkers",("Yes","No","Some of them"))
+
+        with cols5[3]:
+            supervisor = st.selectbox("supervisor",("Yes","No","Some of them"))
+
+        cols6 = st.columns(4)
+        
         with cols6[0]:
-            anonymity = st.selectbox("Is your anonymity protected if you choose to take advantage of mental health?",("Yes","No","Dont't Know"))
-
+            mental_health_interview = st.selectbox("mental_health_interview",("Yes","No","Maybe"))
+        
         with cols6[1]:
-            leave = st.selectbox("How easy is it for you to take medical leave for a mental health condition?",("Very Easy","Somewhat Easy","Somewhat Difficult","Very Difficult","Don't Know"))
-
-
-        cols7 = st.columns(2)
-        with cols7[0]:
-            mental_health_consequence = st.selectbox("Do you think that discussing a mental health issue with your employer would have negative consequences?",("Yes","No","Maybe"))
-
-        with cols7[1]:
-            phys_health_consequence = st.selectbox("Do you think that discussing a physical health issue with your employer would have negative consequences?",("Yes","No","Maybe"))
-
-        cols8 = st.columns(2)
-        with cols8[0]:
-            coworkers = st.selectbox("Would you be willing to discuss a mental health issue with your coworkers?",("Yes","No","Some of them"))
-
-        with cols8[1]:
-            supervisor = st.selectbox("Would you be willing to discuss a mental health issue with your direct supervisor(s)?",("Yes","No","Some of them"))
-
-        cols9 = st.columns(2)
+            phys_health_interview = st.selectbox("phys_health_interview",("Yes","No","Maybe"))
         
-        with cols9[0]:
-            mental_health_interview = st.selectbox("Would you bring up a mental health issue with a potential employer in an interview?",("Yes","No","Maybe"))
+        with cols6[2]:
+            mental_vs_physical = st.selectbox("mental_vs_physical",("Yes","No","Don't Know"))
         
-        with cols9[1]:
-            phys_health_interview = st.selectbox("Would you bring up a physical health issue with a potential employer in an interview?",("Yes","No","Maybe"))
-        cols10 = st.columns(2)        
-        with cols10[0]:
-            mental_vs_physical = st.selectbox("Do you feel that your employer takes mental health as seriously as physical health?",("Yes","No","Don't Know"))
-        
-        with cols10[1]:
-            obs_consequence = st.selectbox("Have you heard negative consequences for coworkers with mental health conditions in your workplace?",("Yes","No"))
+        with cols6[3]:
+            obs_consequence = st.selectbox("obs_consequence",("Yes","No"))
 
         # Transform the inputs into a dataframe shape of size 1 so the model predict the outcome
         dataframe = {'Age':Age,
@@ -527,7 +586,7 @@ if Menu == "Prediction":
             # Customer Unlikely To Churn
             with col2:
                 st.markdown("""<h3 style="color:#0178e4;font-size:35px;">
-                   You don't need a mental health treatment
+                   No need for treatment
                     </h3>""",unsafe_allow_html = True)
         else:
                  st.write("")
@@ -537,5 +596,5 @@ if Menu == "Prediction":
                  # Show Warning Message
                  with col4:
                      st.markdown("""<h3 style="color:#00284c;font-size:35px;">
-                        You need a mental health treatment
+                        Need a treatment
                          </h3>""",unsafe_allow_html = True)
