@@ -41,22 +41,42 @@ t2.title("Mental Health & Well-being")
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
 # define what option labels and icons to display
-Menu = option_menu(None, ["Home",  "EDA", "Prediction"], icons=['house',"bar-chart-line","clipboard-check"],
+Menu = option_menu(None, ["Home", "Dataset",  "EDA", "Prediction"], 
+    icons=['house', 'cloud-upload', "bar-chart-line","clipboard-check"], 
+    menu_icon="cast", default_index=0, orientation="horizontal",
+    styles={
+        "container": {"padding": "0!important", "background-color": "#fafafa"},
+        "icon": {"color": "black", "font-size": "25px"}, 
+        "nav-link": {"font-size": "25px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
+        "nav-link-selected": {"background-color": "pink"},
+    }
+)
 # Home Page
 if Menu == "Home":
+      # Display Introduction
+    st.markdown("""
+    <article>
+  <header class="bg-gold sans-seSans Serif">
+    <div class="mw9 center pa4 pt5-ns ph7-l">
+      <h3 class="f2 f1-m f-headline-l measure-narrow lh-title mv0">
+        <span class="bg-black-90 lh-copy white pa1 tracked-tight">
+        </span>
+      </h3>
+      <h4 class="f3 fw1 Sans Serif i">Analyzing Mental Health at Workplace data</h4>
+      <h5 class="f6 ttu tracked black-80">By Sarah Chamma</h5>
+      </div>
+      </p>
+      </div>
+      </article>""",unsafe_allow_html=True)
 #Upload Image
     from PIL import Image
-    image=Image.open('mental health.jpg')
     title_container = st.container()
-    col1, mid, col2 = st.columns([1,4,1])
-    col3, mid1, col4 = st.columns([1,4,1])
+    col1, mid, col2 = st.columns([30,3,35])
     with title_container:
-      with mid:
-       st.image(image,caption='')
-    with title_container:
-      with mid1:
-        st.write('Without effective support, mental disorders and other mental health conditions can affect a person confidence and identity at work, capacity to work productively, absences and the ease with which to retain or gain work.')
-
+      with col1:
+        st_lottie(lottie_home, key = "upload",width = 700)
+      with col2:
+        st.write('Mental health affects your emotional, psychological and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make decisions. In the workplace, communication and inclusion are keys skills for successful high performing teams or employees.In this application, We will explore the factors that affect an individuals mental health at workplace and develop a model that can predict whether an employee seeks treatment or not.')
 if Menu == "EDA":
   st.header("Visualizations")
   m1, m2, m3, m4, m5, m6 = st.columns((1,1,1,1,1,1))
