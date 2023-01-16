@@ -43,7 +43,7 @@ from streamlit_option_menu import option_menu
 # define what option labels and icons to display
 Menu = option_menu(None, ["Home",  "EDA", "Prediction"], icons=['house',"bar-chart-line","clipboard-check"],
 # Home Page
-if Menu == "Home":
+ if Menu == "Home":
       # Display Introduction
 #Upload Image
     from PIL import Image
