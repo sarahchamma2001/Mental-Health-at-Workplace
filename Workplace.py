@@ -37,7 +37,16 @@ st.set_page_config(page_title='Mental Health at workplace',  layout='wide')
 t1, t2 = st.columns((0.4,1)) 
 t2.title("Mental Health & Well-being")
 
-Menu = option_menu(None, ["Home",  "EDA", "Prediction"], icons=['house',"bar-chart-line","clipboard-check"]),
+Menu = option_menu(None, ["Home", "Dataset",  "EDA", "Prediction"], 
+    icons=['house', 'cloud-upload', "bar-chart-line","clipboard-check"], 
+    menu_icon="cast", default_index=0, orientation="horizontal",
+    styles={
+        "container": {"padding": "0!important", "background-color": "#fafafa"},
+        "icon": {"color": "black", "font-size": "25px"}, 
+        "nav-link": {"font-size": "25px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
+        "nav-link-selected": {"background-color": "pink"},
+    }
+)
 # Home Page
 if Menu == "Home":
       # Display Introduction
