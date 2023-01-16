@@ -37,7 +37,7 @@ st.set_page_config(page_title='Mental Health at workplace',  layout='wide')
 t1, t2 = st.columns((0.4,1)) 
 t2.title("Mental Health & Well-being")
 
-Menu = option_menu(None, ["Home",  "EDA", "Prediction"], icons=['house',"bar-chart-line","clipboard-check"],
+Menu = option_menu(None, ["Home",  "EDA", "Prediction"], icons=['house',"bar-chart-line","clipboard-check"]),
 # Home Page
 if Menu == "Home":
       # Display Introduction
