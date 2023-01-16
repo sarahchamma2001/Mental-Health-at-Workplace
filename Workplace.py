@@ -36,7 +36,6 @@ st.set_page_config(page_title='Mental Health at workplace',  layout='wide')
 #header
 t1, t2 = st.columns((0.4,1)) 
 t2.title("Mental Health & Well-being")
-
 Menu = option_menu(None, ["Home", "Dataset",  "EDA", "Prediction"], 
     icons=['house', 'cloud-upload', "bar-chart-line","clipboard-check"], 
     menu_icon="cast", default_index=0, orientation="horizontal",
